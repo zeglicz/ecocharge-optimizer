@@ -1,0 +1,14 @@
+{
+  "name": "ecocharge-optimizer-api",
+  "author": "Przemysław Żeglicz",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon src/index.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "nodemon": "^3.1.14",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.2"
+  }
+}
