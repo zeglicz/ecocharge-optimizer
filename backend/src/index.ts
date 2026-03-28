@@ -1,55 +1,13 @@
-import axios from 'axios';
-
-const NESO_API_URL = 'https://api.carbonintensity.org.uk';
+import { type Interval } from './types/index.ts';
+import { getDateRange } from './utlis/date.ts';
+import { fetchGeneration } from './services/apiGeneration.ts';
 
 const CLEAN_SOURCES = ['biomass', 'nuclear', 'hydro', 'wind', 'solar'];
-
-interface EnergySource {
-  fuel: string;
-  perc: number;
-}
-
-interface Interval {
-  from: string;
-  to: string;
-  generationmix: EnergySource[];
-}
 
 interface DayData {
   date: string;
   sources: Record<string, number>;
   cleanEnergyPercent: number;
-}
-
-function getDateRange(days: number): { from: string; to: string } {
-  const now = new Date();
-
-  const start = new Date(
-    Date.UTC(
-      now.getUTCFullYear(),
-      now.getUTCMonth(),
-      now.getUTCDate(),
-      0,
-      0,
-      0,
-      0,
-    ),
-  );
-
-  const end = new Date(start);
-  end.setUTCDate(start.getUTCDate() + days);
-
-  return {
-    from: start.toISOString(),
-    to: end.toISOString(),
-  };
-}
-
-async function fetchGeneration(from: string, to: string): Promise<Interval[]> {
-  const url = `${NESO_API_URL}/generation/${from}/${to}`;
-  const response = await axios.get(url);
-
-  return response.data.data;
 }
 
 function groupAndAverage(intervals: Interval[]): DayData[] {
