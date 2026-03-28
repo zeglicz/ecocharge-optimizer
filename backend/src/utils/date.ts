@@ -7,7 +7,7 @@ export function getDateRange(days: number): { from: string; to: string } {
       now.getUTCMonth(),
       now.getUTCDate(),
       0,
-      0,
+      30,
       0,
       0,
     ),
@@ -15,6 +15,7 @@ export function getDateRange(days: number): { from: string; to: string } {
 
   const end = new Date(start);
   end.setUTCDate(start.getUTCDate() + days);
+  end.setUTCMinutes(end.getUTCMinutes() - 30);
 
   return {
     from: start.toISOString(),
