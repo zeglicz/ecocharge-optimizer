@@ -3,6 +3,7 @@ import { CLEAN_SOURCES } from '../constants/energy.ts';
 
 import { getCurrentHalfHour, getDateRange } from '../utils/date.ts';
 import { fetchGeneration } from './apiGeneration.ts';
+import { NotEnoughDataError } from '../errors/NotEnoughDataError.ts';
 
 interface OptimalChargingWindowResult {
   startDate: string;
@@ -35,6 +36,11 @@ export async function findOptimalChargingWindow(
   );
 
   const windowSize = hours * 2;
+
+  if (futureIntervals.length < windowSize) {
+    throw new NotEnoughDataError(hours, futureIntervals.length);
+  }
+
   let bestScore = -1;
   let bestStart = 0;
 
