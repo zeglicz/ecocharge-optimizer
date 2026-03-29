@@ -19,7 +19,9 @@ router.get('/daily', async (_, res) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Failed to fetch generation data' });
+    res
+      .status(500)
+      .json({ status: 'error', message: 'Failed to fetch generation data' });
   }
 });
 
@@ -35,7 +37,8 @@ router.get('/charging-window', async (req, res) => {
     hours > 6
   ) {
     return res.status(400).json({
-      error: 'hours must be an integer between 1 and 6',
+      status: 'fail',
+      message: 'hours must be an integer between 1 and 6',
     });
   }
 
@@ -44,8 +47,10 @@ router.get('/charging-window', async (req, res) => {
 
     res.status(200).json({ status: 'success', data });
   } catch (error) {
+    console.error(error);
     res.status(500).json({
-      error: 'Failed to calculate charging window',
+      status: 'error',
+      message: 'Failed to calculate charging window',
     });
   }
 });

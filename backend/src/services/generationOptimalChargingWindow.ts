@@ -9,7 +9,7 @@ interface OptimalChargingWindowResult {
   startTime: string;
   endDate: string;
   endTime: string;
-  cleanEnergyPrecent: number;
+  cleanEnergyPercent: number;
 }
 
 function calcCleanPercent(intervals: Interval[]): number {
@@ -56,6 +56,6 @@ export async function findOptimalChargingWindow(
     startTime: firstInterval.from.slice(11, 16),
     endDate: lastInterval.to.slice(0, 10),
     endTime: lastInterval.to.slice(11, 16),
-    cleanEnergyPrecent: bestScore,
+    cleanEnergyPercent: bestScore,
   };
 }
