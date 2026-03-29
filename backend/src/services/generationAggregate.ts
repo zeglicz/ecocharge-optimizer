@@ -1,6 +1,5 @@
 import type { Interval } from '../types/index.ts';
-
-const CLEAN_SOURCES = ['biomass', 'nuclear', 'hydro', 'wind', 'solar'];
+import { CLEAN_SOURCES } from '../constants/energy.ts';
 
 interface DayData {
   date: string;
