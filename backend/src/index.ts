@@ -1,9 +1,17 @@
 import express from 'express';
+import cors from 'cors';
 import 'dotenv/config';
 
 import generationRouter from './routes/generationRoutes.ts';
 
 const app = express();
+
+app.use(
+  cors({
+    origin: process.env.FRONTEND_ORIGIN,
+    methods: ['GET'],
+  }),
+);
 
 app.use('/api/v1/generation', generationRouter);
 
