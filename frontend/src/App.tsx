@@ -7,6 +7,7 @@ import Header from './components/Header';
 import Section from './components/Section';
 import CardsGrid from './components/CardsGrid';
 import EnergyMixCard from './components/EnergyMixCard';
+import Card from './components/Card';
 
 const AppWrapper = styled.div`
   max-width: ${breakpoints.lg}px;
@@ -69,7 +70,7 @@ export default function App() {
 
       <AppWrapper>
         <Section label="Energy Mix - 3-day Overview">
-          <CardsGrid>
+          <CardsGrid columns={{ mobile: 1, tablet: 2, desktop: 3 }}>
             {data.map((day, index) => {
               const titles = ['Today', 'Tomorrow', 'In 2 days'];
 
@@ -81,6 +82,12 @@ export default function App() {
                 />
               );
             })}
+          </CardsGrid>
+        </Section>
+        <Section label="Optimal Charging Window">
+          <CardsGrid columns={{ mobile: 1, tablet: 1, desktop: 2 }}>
+            <Card></Card>
+            <Card></Card>
           </CardsGrid>
         </Section>
       </AppWrapper>
