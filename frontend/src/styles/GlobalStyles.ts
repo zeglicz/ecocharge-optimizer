@@ -6,8 +6,20 @@ const GlobalStyles = createGlobalStyle`
   --text-color: #e8f0f8;
   --text-muted: #5a7080;
   --green-accent: #00e5a0;
+  --yellow-accent:#fde689;
+  --red-accent: #f87170;
 
   --border: rgba(255, 255, 255, 0.07);
+
+  --biomass: #6fcf4a;
+  --nuclear: #f5a623;
+  --hydro: #4ab8f5;
+  --wind: #a78bfa;
+  --solar: #fde68a;
+  --gas: #f87171;
+  --coal: #94a3b8;
+  --imports: #fb923c;
+  --other: #64748b;
 }
 
 *,

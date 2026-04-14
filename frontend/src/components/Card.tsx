@@ -6,23 +6,23 @@ const Card = styled.div`
   border-radius: 16px;
   padding: 24px;
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
   transition: border-color 0.2s;
 
   &:hover {
     border-color: rgba(0, 229, 160, 0.2);
   }
 
-  &::before {
+  /* &::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
+    left: 5px;
     right: 0;
     height: 2px;
-    background: linear-gradient(90deg, var(--green-accent), transparent);
+    background: linear-gradient(30deg, var(--green-accent), transparent);
     opacity: 0.6;
-  }
+  } */
 `;
 
 export default Card;
