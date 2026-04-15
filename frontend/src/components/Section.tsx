@@ -14,7 +14,7 @@ const Label = styled.div`
   font-size: 0.7rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   margin: 40px 15px 30px 15px;
   display: flex;
   align-items: center;
@@ -24,7 +24,7 @@ const Label = styled.div`
     content: '';
     flex: 1;
     height: 1px;
-    background: var(--border);
+    background: var(--color-border);
   }
 `;
 

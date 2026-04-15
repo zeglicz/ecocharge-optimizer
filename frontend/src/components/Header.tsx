@@ -7,7 +7,7 @@ const HeaderStyled = styled.header`
   padding: 40px 0;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--color-border);
 
   img {
     height: 50px;
@@ -36,7 +36,7 @@ const HeaderStyled = styled.header`
 `;
 
 const Highlight = styled.span`
-  color: var(--green-accent);
+  color: var(--color-accent-green);
 `;
 
 function Header() {

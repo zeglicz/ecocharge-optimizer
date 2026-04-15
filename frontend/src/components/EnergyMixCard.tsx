@@ -25,16 +25,16 @@ const PercentValue = styled.span`
   font-family: 'Syne';
   font-size: 1.4rem;
   font-weight: 500;
-  color: var(--green-accent);
+  color: var(--color-accent-green);
 `;
 
 const DateText = styled.span`
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   font-size: 0.75rem;
 `;
 
 const MutedText = styled.span`
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   font-size: 0.75rem;
   text-transform: uppercase;
   padding-right: 3px;
@@ -120,8 +120,8 @@ function CardOverview({ title, data }: CardOverviewProps) {
               position={{ y: -50 }}
               wrapperStyle={{ zIndex: 10 }}
               contentStyle={{
-                background: '#090e12',
-                border: '1px solid var(--border)',
+                background: 'var(--color-bg)',
+                border: '1px solid var(--color-border)',
                 borderRadius: '6px',
                 fontSize: '12px',
               }}

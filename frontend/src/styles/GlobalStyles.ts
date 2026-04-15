@@ -2,14 +2,15 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
 :root {
-  --bg-color: #090e12;
-  --text-color: #e8f0f8;
-  --text-muted: #5a7080;
-  --green-accent: #00e5a0;
-  --yellow-accent:#fde689;
-  --red-accent: #f87170;
-
-  --border: rgba(255, 255, 255, 0.07);
+  --color-bg: #090e12;
+  --color-surface: #0f1820;
+  --color-surface-2: #152030;
+  --color-text: #e8f0f8;
+  --color-text-muted: #5a7080;
+  --color-accent-green: #00e5a0;
+  --color-accent-yellow: #fde689;
+  --color-accent-red: #f87170;
+  --color-border: rgba(255, 255, 255, 0.07);
 
   --biomass: #6fcf4a;
   --nuclear: #f5a623;
@@ -32,8 +33,8 @@ const GlobalStyles = createGlobalStyle`
 
 body {
   font-family: 'DM Mono', monospace;
-  background: var(--bg-color);
-  color: var(--text-color);
+  background: var(--color-bg);
+  color: var(--color-text);
   min-height: 100vh;
 }
 
@@ -45,21 +46,20 @@ button {
   cursor: not-allowed;
 }
 
-/* TODO: */
-/*
-select:disabled,
-input:disabled {
-  background-color: #000;
-  color: #000;
+button:disabled,
+input:disabled,
+textarea:disabled,
+select:disabled {
+  opacity: 0.6;
 }
 
-input:focus,
-button:focus,
-textarea:focus,
-select:focus {
-  outline: 2px solid var(--color-brand-600);
-  outline-offset: -1px;
-} */
+input:focus-visible,
+button:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--color-accent-green);
+  outline-offset: 2px;
+}
 
 input,
 button,

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 const Card = styled.div`
-  background: #0f1820;
-  border: 1px solid var(--border);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: 16px;
   padding: 24px;
   position: relative;
@@ -20,7 +20,7 @@ const Card = styled.div`
     left: 5px;
     right: 0;
     height: 2px;
-    background: linear-gradient(30deg, var(--green-accent), transparent);
+    background: linear-gradient(30deg, var(--color-accent-green), transparent);
     opacity: 0.6;
   } */
 `;
