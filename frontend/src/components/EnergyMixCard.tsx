@@ -28,12 +28,12 @@ const PercentValue = styled.span`
   color: var(--green-accent);
 `;
 
-const MutedText = styled.span`
+const DateText = styled.span`
   color: var(--text-muted);
   font-size: 0.75rem;
 `;
 
-const DateText = styled.span`
+const MutedText = styled.span`
   color: var(--text-muted);
   font-size: 0.75rem;
   text-transform: uppercase;
@@ -92,8 +92,8 @@ function CardOverview({ title, data }: CardOverviewProps) {
       </Row>
 
       <Row>
-        <MutedText>{formattedDate}</MutedText>
-        <DateText>clean</DateText>
+        <DateText>{formattedDate}</DateText>
+        <MutedText>clean</MutedText>
       </Row>
 
       <ChartContainer>
