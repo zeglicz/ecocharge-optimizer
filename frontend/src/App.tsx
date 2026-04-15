@@ -7,7 +7,7 @@ import Header from './components/Header';
 import Section from './components/Section';
 import CardsGrid from './components/CardsGrid';
 import EnergyMixCard from './components/EnergyMixCard';
-import Card from './components/Card';
+import { ChargingSlotCard } from './components/ChargingSlotCard';
 
 const AppWrapper = styled.div`
   max-width: ${breakpoints.lg}px;
@@ -86,8 +86,7 @@ export default function App() {
         </Section>
         <Section label="Optimal Charging Window">
           <CardsGrid columns={{ mobile: 1, tablet: 1, desktop: 2 }}>
-            <Card></Card>
-            <Card></Card>
+            <ChargingSlotCard />
           </CardsGrid>
         </Section>
       </AppWrapper>
