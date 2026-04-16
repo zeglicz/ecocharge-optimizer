@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 
 import Card from './Card';
-// import { media } from '../styles/media';
+import { media } from '../styles/media';
 
 const Title = styled.h3`
   font-weight: 500;
@@ -15,124 +15,148 @@ const Subtitle = styled.div`
   margin-bottom: 32px;
 `;
 
-// const EmptyState = styled.div`
-//   margin: 16px auto 0 auto;
-//   display: flex;
-//   width: 75%;
-//   min-height: 210px;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-//   gap: 8px;
+const StateContainer = styled.div`
+  display: flex;
+  width: 75%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 
-//   ${media.sm`
-//     width: 330px;
-//   `}
+  ${media.sm`
+    width: 330px;
+  `}
+`;
+
+// const EmptyState = styled(StateContainer)`
+//   margin: 16px auto 0 auto;
+//   min-height: 210px;
 
 //   ${media.md`
-//     min-height: 238px;
+//     min-height: 220px;
 //   `}
 // `;
 
+const ErrorState = styled(StateContainer)`
+  margin: 16px auto 42px auto;
+
+  ${media.md`
+    min-height: 176px;
+  `}
+`;
+
 // const ResultIcon = styled.div`
-//   font-size: 36px;
-//   line-height: 1;
+//   font-size: 48px;
+//   line-height: 1.5;
 //   opacity: 0.5;
 // `;
 
-// const Hint = styled.div`
-//   color: var(--color-text-muted);
-//   font-size: 0.75rem;
-//   text-align: center;
+const WarningIcon = styled.div`
+  font-size: 100px;
+  line-height: 1;
+  color: var(--color-accent-red);
+`;
+
+const StateMessage = styled.div`
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  text-align: center;
+`;
+
+// const ScoreRow = styled.div``;
+
+// const ScoreValue = styled.span`
+//   font-family: 'Syne', sans-serif;
+//   font-size: 3.4rem;
+//   font-weight: 500;
+//   color: var(--color-accent-green);
+//   line-height: 1;
 // `;
 
-const ScoreRow = styled.div``;
+// const ScoreLabel = styled.span`
+//   color: var(--color-text-muted);
+//   text-transform: uppercase;
+//   font-size: 0.8rem;
+//   margin-left: 8px;
+// `;
 
-const ScoreValue = styled.span`
-  font-family: 'Syne', sans-serif;
-  font-size: 3.4rem;
-  font-weight: 500;
-  color: var(--color-accent-green);
-  line-height: 1;
-`;
+// const TimeRow = styled.div`
+//   margin-top: 28px;
+//   display: flex;
+//   align-items: center;
+//   gap: 10px;
+// `;
 
-const ScoreLabel = styled.span`
-  color: var(--color-text-muted);
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  margin-left: 8px;
-`;
+// const TimeBlock = styled.div`
+//   flex: 1;
+//   border-radius: 10px;
+//   padding: 15px;
+//   background: linear-gradient(
+//     180deg,
+//     rgba(0, 229, 160, 0.06) 0%,
+//     rgba(21, 32, 48, 0.8) 100%
+//   );
+// `;
 
-const TimeRow = styled.div`
-  margin-top: 28px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-`;
+// const TimeBlockLabel = styled.div`
+//   color: var(--color-text-muted);
+//   font-size: 0.65rem;
+//   text-transform: uppercase;
+//   letter-spacing: 0.08em;
+// `;
 
-const TimeBlock = styled.div`
-  flex: 1;
-  border-radius: 10px;
-  padding: 15px;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 229, 160, 0.06) 0%,
-    rgba(21, 32, 48, 0.8) 100%
-  );
-`;
+// const TimeBlockDate = styled.div`
+//   margin-top: 6px;
+//   font-size: 0.7rem;
+//   color: var(--color-text-muted);
+// `;
 
-const TimeBlockLabel = styled.div`
-  color: var(--color-text-muted);
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-`;
+// const TimeBlockTime = styled.div`
+//   margin-top: 2px;
+//   font-family: 'Syne', sans-serif;
+//   font-size: 1.2rem;
+//   line-height: 1.1;
+// `;
 
-const TimeBlockDate = styled.div`
-  margin-top: 6px;
-  font-size: 0.7rem;
-  color: var(--color-text-muted);
-`;
+// const Arrow = styled.div`
+//   color: var(--color-text-muted);
+//   font-size: 1.1rem;
+// `;
 
-const TimeBlockTime = styled.div`
-  margin-top: 2px;
-  font-family: 'Syne', sans-serif;
-  font-size: 1.2rem;
-  line-height: 1.1;
-`;
-
-const Arrow = styled.div`
-  color: var(--color-text-muted);
-  font-size: 1.1rem;
-`;
-
-const DurationTag = styled.div`
-  margin-top: 28px;
-  border-radius: 1000px;
-  border: 1px solid rgba(0, 229, 160, 0.3);
-  background: rgba(0, 229, 160, 0.08);
-  color: var(--color-text);
-  padding: 8px 14px;
-  font-size: 0.7rem;
-  display: inline-flex;
-  align-items: center;
-`;
+// const DurationTag = styled.div`
+//   margin-top: 28px;
+//   border-radius: 1000px;
+//   border: 1px solid rgba(0, 229, 160, 0.3);
+//   background: rgba(0, 229, 160, 0.08);
+//   color: var(--color-text);
+//   padding: 8px 14px;
+//   font-size: 0.7rem;
+//   display: inline-flex;
+//   align-items: center;
+// `;
 
 export function ChargingWindowCard() {
   return (
     <Card>
       <Title>Best charging window</Title>
-      <Subtitle>Results will appear here after analysis.</Subtitle>
+      <Subtitle>Results will appear here after you run the analysis.</Subtitle>
       {/* <EmptyState>
         <ResultIcon>🔋</ResultIcon>
-        <Hint>
+        <StateMessage>
           Set your charging duration and click analyze to find the
           greenest
           window.
-        </Hint>
+        </StateMessage>
       </EmptyState> */}
+      <ErrorState>
+        <WarningIcon>⚠</WarningIcon>
+        <StateMessage>
+          Something went wrong while calculating your best charging window. Try
+          again later.
+        </StateMessage>
+      </ErrorState>
 
-      <ScoreRow>
+      {/* <ScoreRow>
         <ScoreValue>74%</ScoreValue>
         <ScoreLabel>avg clean energy</ScoreLabel>
       </ScoreRow>
@@ -153,7 +177,7 @@ export function ChargingWindowCard() {
         </TimeBlock>
       </TimeRow>
 
-      <DurationTag>3-hour window</DurationTag>
+      <DurationTag>3-hour window</DurationTag> */}
     </Card>
   );
 }
