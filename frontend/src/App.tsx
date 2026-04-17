@@ -9,6 +9,7 @@ import CardsGrid from './components/CardsGrid';
 import EnergyMixCard from './components/EnergyMixCard';
 import { ChargingSlotCard } from './components/ChargingSlotCard';
 import { ChargingWindowCard } from './components/ChargingWindowCard';
+import Footer from './components/Footer';
 
 const AppWrapper = styled.div`
   max-width: ${breakpoints.lg}px;
@@ -85,6 +86,7 @@ export default function App() {
             })}
           </CardsGrid>
         </Section>
+
         <Section label="Optimal Charging Window">
           <CardsGrid columns={{ mobile: 1, tablet: 1, desktop: 2 }}>
             <ChargingSlotCard />
@@ -92,6 +94,8 @@ export default function App() {
           </CardsGrid>
         </Section>
       </AppWrapper>
+
+      <Footer />
     </>
   );
 }
