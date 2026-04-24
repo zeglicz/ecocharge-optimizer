@@ -8,6 +8,8 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 
+import type { DayGenerationData } from '../types';
+
 import Card from './Card';
 
 const Row = styled.div`
@@ -48,21 +50,7 @@ const ChartContainer = styled.div`
 
 type CardOverviewProps = {
   title: string;
-  data: {
-    date: string;
-    sources: {
-      biomass: number;
-      coal: number;
-      imports: number;
-      gas: number;
-      nuclear: number;
-      other: number;
-      hydro: number;
-      solar: number;
-      wind: number;
-    };
-    cleanEnergyPercent: number;
-  };
+  data: DayGenerationData;
 };
 
 function CardOverview({ title, data }: CardOverviewProps) {
