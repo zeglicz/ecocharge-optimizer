@@ -43,6 +43,34 @@ const Spinner = styled.div`
   animation: ${spin} 0.8s linear infinite;
 `;
 
+const ErrorCard = styled(Card)`
+  min-height: 132px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  border-color: rgba(248, 113, 112, 0.25);
+`;
+
+const ErrorIcon = styled.div`
+  font-size: 42px;
+  line-height: 1;
+  color: var(--color-accent-red);
+`;
+
+const ErrorTitle = styled.h3`
+  font-size: 16px;
+  font-weight: 500;
+`;
+
+const ErrorMessage = styled.p`
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  max-width: 240px;
+`;
+
 export default function App() {
   const [generationData, setGenerationData] = useState<DayGenerationData[]>([]);
   const [loading, setLoading] = useState(true);
@@ -74,6 +102,22 @@ export default function App() {
                 >
                   <Spinner aria-label="Loading generation data" />
                 </LoadingCard>
+              ))}
+            {!loading &&
+              !!error &&
+              ['Today', 'Tomorrow', 'In 2 days'].map((title) => (
+                <ErrorCard
+                  key={`error-${title}`}
+                  aria-live="polite"
+                  aria-busy="false"
+                >
+                  <ErrorIcon aria-hidden>⚠</ErrorIcon>
+                  <ErrorTitle>{title}</ErrorTitle>
+                  <ErrorMessage>
+                    Could not load generation data right now. Please try again
+                    in a moment.
+                  </ErrorMessage>
+                </ErrorCard>
               ))}
             {!loading &&
               !error &&
