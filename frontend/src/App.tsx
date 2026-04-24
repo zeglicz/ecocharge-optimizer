@@ -1,4 +1,4 @@
-import { styled } from 'styled-components';
+import { keyframes, styled } from 'styled-components';
 import { useEffect, useState } from 'react';
 
 import { fetchGeneration } from './services/api';
@@ -10,6 +10,7 @@ import { breakpoints } from './styles/breakpoints';
 import Header from './components/Header';
 import Section from './components/Section';
 import CardsGrid from './components/CardsGrid';
+import Card from './components/Card';
 import EnergyMixCard from './components/EnergyMixCard';
 import { ChargingSlotCard } from './components/ChargingSlotCard';
 import { ChargingWindowCard } from './components/ChargingWindowCard';
@@ -20,6 +21,28 @@ const AppWrapper = styled.div`
   margin: 0 auto;
 `;
 
+const spin = keyframes`
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+const LoadingCard = styled(Card)`
+  min-height: 132px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Spinner = styled.div`
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0, 229, 160, 0.2);
+  border-top-color: var(--color-accent-green);
+  border-radius: 50%;
+  animation: ${spin} 0.8s linear infinite;
+`;
+
 export default function App() {
   const [generationData, setGenerationData] = useState<DayGenerationData[]>([]);
   const [loading, setLoading] = useState(true);
@@ -27,7 +50,9 @@ export default function App() {
 
   useEffect(() => {
     fetchGeneration()
-      .then((res) => setGenerationData(res.data))
+      .then(async (res) => {
+        setGenerationData(res.data);
+      })
       .catch(() => setError('Error'))
       .finally(() => setLoading(false));
   }, []);
@@ -40,6 +65,16 @@ export default function App() {
       <AppWrapper>
         <Section label="Energy Mix - 3-day Overview">
           <CardsGrid columns={{ mobile: 1, tablet: 2, desktop: 3 }}>
+            {loading &&
+              Array.from({ length: 3 }).map((_, index) => (
+                <LoadingCard
+                  key={`loading-${index}`}
+                  aria-live="polite"
+                  aria-busy="true"
+                >
+                  <Spinner aria-label="Loading generation data" />
+                </LoadingCard>
+              ))}
             {!loading &&
               !error &&
               generationData.map((day, index) => {
