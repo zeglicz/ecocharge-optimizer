@@ -14,7 +14,10 @@ const ErrorCard = styled(Card)`
   align-items: center;
   gap: 8px;
   text-align: center;
-  border-color: rgba(248, 113, 112, 0.25);
+
+  &:hover {
+    border-color: rgba(248, 113, 112, 0.2);
+  }
 `;
 
 const ErrorIcon = styled.div`
