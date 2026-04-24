@@ -1,7 +1,12 @@
 import { styled } from 'styled-components';
 
-import Card from './Card';
+import type { ChargingWindowState } from '../types';
 import { media } from '../styles/media';
+
+import Card from './Card';
+import ChargingWindowCardLoading from './ChargingWindowCardLoading';
+import ChargingWindowCardError from './ChargingWindowCardError';
+import ChargingWindowCardResult from './ChargingWindowCardResult';
 
 const Title = styled.h3`
   font-weight: 500;
@@ -12,7 +17,7 @@ const Subtitle = styled.div`
   margin-top: 12px;
   color: var(--color-text-muted);
   font-size: 0.75rem;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 `;
 
 const StateContainer = styled.div`
@@ -28,156 +33,63 @@ const StateContainer = styled.div`
   `}
 `;
 
-// const EmptyState = styled(StateContainer)`
-//   margin: 16px auto 0 auto;
-//   min-height: 210px;
-
-//   ${media.md`
-//     min-height: 220px;
-//   `}
-// `;
-
-const ErrorState = styled(StateContainer)`
-  margin: 16px auto 42px auto;
+const IdleState = styled(StateContainer)`
+  margin: 0 auto;
+  min-height: 216px;
 
   ${media.md`
-    min-height: 176px;
+    min-height: 205px;
   `}
 `;
 
-// const ResultIcon = styled.div`
-//   font-size: 48px;
-//   line-height: 1.5;
-//   opacity: 0.5;
-// `;
-
-const WarningIcon = styled.div`
-  font-size: 100px;
-  line-height: 1;
-  color: var(--color-accent-red);
+const IdleStateIcon = styled.div`
+  font-size: 38px;
+  line-height: 1.5;
+  opacity: 0.5;
 `;
 
-const StateMessage = styled.div`
+const IdleStateMessage = styled.div`
   color: var(--color-text-muted);
   font-size: 0.75rem;
   text-align: center;
 `;
 
-// const ScoreRow = styled.div``;
+export type ChargingWindowCardProps = ChargingWindowState;
 
-// const ScoreValue = styled.span`
-//   font-family: 'Syne', sans-serif;
-//   font-size: 3.4rem;
-//   font-weight: 500;
-//   color: var(--color-accent-green);
-//   line-height: 1;
-// `;
+function renderByStatus(props: ChargingWindowState) {
+  switch (props.status) {
+    case 'idle':
+      return (
+        <IdleState>
+          <IdleStateIcon aria-hidden>🔋</IdleStateIcon>
+          <IdleStateMessage>
+            Set your charging duration and click analyze to find the greenest
+            window.
+          </IdleStateMessage>
+        </IdleState>
+      );
+    case 'loading':
+      return <ChargingWindowCardLoading />;
+    case 'error':
+      return <ChargingWindowCardError />;
+    case 'result':
+      return (
+        <ChargingWindowCardResult
+          result={props.result}
+          durationLabel={props.durationLabel}
+        />
+      );
+  }
+}
 
-// const ScoreLabel = styled.span`
-//   color: var(--color-text-muted);
-//   text-transform: uppercase;
-//   font-size: 0.8rem;
-//   margin-left: 8px;
-// `;
-
-// const TimeRow = styled.div`
-//   margin-top: 28px;
-//   display: flex;
-//   align-items: center;
-//   gap: 10px;
-// `;
-
-// const TimeBlock = styled.div`
-//   flex: 1;
-//   border-radius: 10px;
-//   padding: 15px;
-//   background: linear-gradient(
-//     180deg,
-//     rgba(0, 229, 160, 0.06) 0%,
-//     rgba(21, 32, 48, 0.8) 100%
-//   );
-// `;
-
-// const TimeBlockLabel = styled.div`
-//   color: var(--color-text-muted);
-//   font-size: 0.65rem;
-//   text-transform: uppercase;
-//   letter-spacing: 0.08em;
-// `;
-
-// const TimeBlockDate = styled.div`
-//   margin-top: 6px;
-//   font-size: 0.7rem;
-//   color: var(--color-text-muted);
-// `;
-
-// const TimeBlockTime = styled.div`
-//   margin-top: 2px;
-//   font-family: 'Syne', sans-serif;
-//   font-size: 1.2rem;
-//   line-height: 1.1;
-// `;
-
-// const Arrow = styled.div`
-//   color: var(--color-text-muted);
-//   font-size: 1.1rem;
-// `;
-
-// const DurationTag = styled.div`
-//   margin-top: 28px;
-//   border-radius: 1000px;
-//   border: 1px solid rgba(0, 229, 160, 0.3);
-//   background: rgba(0, 229, 160, 0.08);
-//   color: var(--color-text);
-//   padding: 8px 14px;
-//   font-size: 0.7rem;
-//   display: inline-flex;
-//   align-items: center;
-// `;
-
-export function ChargingWindowCard() {
+export function ChargingWindowCard(
+  props: ChargingWindowCardProps = { status: 'idle' },
+) {
   return (
     <Card>
       <Title>Best charging window</Title>
       <Subtitle>Results will appear here after you run the analysis.</Subtitle>
-      {/* <EmptyState>
-        <ResultIcon>🔋</ResultIcon>
-        <StateMessage>
-          Set your charging duration and click analyze to find the
-          greenest
-          window.
-        </StateMessage>
-      </EmptyState> */}
-      <ErrorState>
-        <WarningIcon>⚠</WarningIcon>
-        <StateMessage>
-          Something went wrong while calculating your best charging window. Try
-          again later.
-        </StateMessage>
-      </ErrorState>
-
-      {/* <ScoreRow>
-        <ScoreValue>74%</ScoreValue>
-        <ScoreLabel>avg clean energy</ScoreLabel>
-      </ScoreRow>
-
-      <TimeRow>
-        <TimeBlock>
-          <TimeBlockLabel>Start</TimeBlockLabel>
-          <TimeBlockDate>Tue, 31 Mar</TimeBlockDate>
-          <TimeBlockTime>14:00</TimeBlockTime>
-        </TimeBlock>
-
-        <Arrow aria-hidden>→</Arrow>
-
-        <TimeBlock>
-          <TimeBlockLabel>End</TimeBlockLabel>
-          <TimeBlockDate>Tue, 31 Mar</TimeBlockDate>
-          <TimeBlockTime>17:00</TimeBlockTime>
-        </TimeBlock>
-      </TimeRow>
-
-      <DurationTag>3-hour window</DurationTag> */}
+      {renderByStatus(props)}
     </Card>
   );
 }

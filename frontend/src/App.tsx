@@ -13,8 +13,7 @@ import CardsGrid from './components/CardsGrid';
 import EnergyMixCard from './components/EnergyMixCard';
 import EnergyMixCardLoading from './components/EnergyMixCardLoading';
 import EnergyMixCardError from './components/EnergyMixCardError';
-import { ChargingSlotCard } from './components/ChargingSlotCard';
-import { ChargingWindowCard } from './components/ChargingWindowCard';
+import { ChargingSection } from './components/ChargingSection';
 import Footer from './components/Footer';
 
 const AppWrapper = styled.div`
@@ -69,12 +68,7 @@ export default function App() {
           </CardsGrid>
         </Section>
 
-        <Section label="Optimal Charging Window">
-          <CardsGrid columns={{ mobile: 1, tablet: 1, desktop: 2 }}>
-            <ChargingSlotCard />
-            <ChargingWindowCard />
-          </CardsGrid>
-        </Section>
+        <ChargingSection />
       </AppWrapper>
 
       <Footer />

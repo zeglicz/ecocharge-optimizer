@@ -51,6 +51,7 @@ input:disabled,
 textarea:disabled,
 select:disabled {
   opacity: 0.6;
+  cursor: not-allowed;
 }
 
 input:focus-visible,

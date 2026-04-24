@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { styled } from 'styled-components';
 
 import Card from './Card';
@@ -122,11 +121,6 @@ const AnalyzeButton = styled.button`
   transition:
     opacity 0.2s,
     transform 0.15s;
-
-  &:hover {
-    opacity: 0.88;
-    transform: translateY(-1px);
-  }
 `;
 
 const HOUR_OPTIONS = [1, 2, 3, 4, 5, 6] as const;
@@ -148,9 +142,19 @@ function getForecastWindowHours(now: Date): number {
   return (end.getTime() - start.getTime()) / (1000 * 60 * 60);
 }
 
-export function ChargingSlotCard() {
-  const [hours, setHours] = useState(3);
+type ChargingSlotCardProps = {
+  hours: number;
+  onHoursChange: (hours: number) => void;
+  onAnalyze: () => void;
+  analyzeLoading: boolean;
+};
 
+export function ChargingSlotCard({
+  hours,
+  onHoursChange,
+  onAnalyze,
+  analyzeLoading,
+}: ChargingSlotCardProps) {
   const hoursValue = getForecastWindowHours(new Date());
   const forecastWindowHours = Number.isInteger(hoursValue)
     ? String(hoursValue)
@@ -176,7 +180,7 @@ export function ChargingSlotCard() {
           min={1}
           max={6}
           value={hours}
-          onChange={(event) => setHours(Number(event.target.value))}
+          onChange={(e) => onHoursChange(Number(e.target.value))}
           aria-label="Charging duration in hours"
         />
       </SliderContainer>
@@ -187,7 +191,13 @@ export function ChargingSlotCard() {
         ))}
       </TickRow>
 
-      <AnalyzeButton type="button">Analyze optimal window</AnalyzeButton>
+      <AnalyzeButton
+        type="button"
+        onClick={onAnalyze}
+        disabled={analyzeLoading}
+      >
+        Analyze optimal window
+      </AnalyzeButton>
     </Card>
   );
 }
