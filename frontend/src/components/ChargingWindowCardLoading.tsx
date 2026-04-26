@@ -21,6 +21,10 @@ const LoadingArea = styled.div`
   ${media.sm`
     width: 330px;
   `}
+
+  ${media.lg`
+    min-height: 214px;
+  `}
 `;
 
 const Spinner = styled.div`

@@ -29,7 +29,8 @@ export function ChargingSection() {
         result: response.data,
         durationLabel: chargingDurationLabel(analyzedHours),
       });
-    } catch {
+    } catch (err) {
+      console.error('Failed to fetch charging window:', err);
       setChargingWindow({ status: 'error' });
     }
   }

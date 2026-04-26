@@ -56,6 +56,19 @@ const IdleStateMessage = styled.div`
 
 export type ChargingWindowCardProps = ChargingWindowState;
 
+function getSubtitleText(status: ChargingWindowState['status']): string | null {
+  switch (status) {
+    case 'idle':
+      return 'Results will appear here after you run the analysis.';
+    case 'loading':
+      return 'Analyzing the forecast to find the greenest window for your session…';
+    case 'error':
+      return null;
+    case 'result':
+      return "Here's the best slot in the current forecast for your session.";
+  }
+}
+
 function renderByStatus(props: ChargingWindowState) {
   switch (props.status) {
     case 'idle':
@@ -85,10 +98,12 @@ function renderByStatus(props: ChargingWindowState) {
 export function ChargingWindowCard(
   props: ChargingWindowCardProps = { status: 'idle' },
 ) {
+  const subtitle = getSubtitleText(props.status);
+
   return (
     <Card>
       <Title>Best charging window</Title>
-      <Subtitle>Results will appear here after you run the analysis.</Subtitle>
+      {subtitle != null && <Subtitle>{subtitle}</Subtitle>}
       {renderByStatus(props)}
     </Card>
   );

@@ -43,7 +43,8 @@ export default function EnergyMixCardError({ title }: EnergyMixCardErrorProps) {
       <ErrorIcon aria-hidden>⚠</ErrorIcon>
       <ErrorTitle>{title}</ErrorTitle>
       <ErrorMessage>
-        Could not load generation data right now. Please try again in a moment.
+        Couldn&apos;t load the energy mix. Check your connection and try again
+        in a moment.
       </ErrorMessage>
     </ErrorCard>
   );

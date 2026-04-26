@@ -1,6 +1,7 @@
 import { styled } from 'styled-components';
 
 import type { ChargingWindowResult } from '../types';
+import { media } from '../styles/media';
 
 type ChargingWindowCardResultProps = {
   result: ChargingWindowResult;
@@ -75,7 +76,7 @@ const Arrow = styled.div`
 `;
 
 const DurationTag = styled.div`
-  margin-top: 22px;
+  margin-top: 19px;
   border-radius: 1000px;
   border: 1px solid rgba(0, 229, 160, 0.3);
   background: rgba(0, 229, 160, 0.08);
@@ -84,6 +85,10 @@ const DurationTag = styled.div`
   font-size: 0.7rem;
   display: inline-flex;
   align-items: center;
+
+  ${media.lg`
+    margin-top: 16px;
+  `}
 `;
 
 export default function ChargingWindowCardResult({

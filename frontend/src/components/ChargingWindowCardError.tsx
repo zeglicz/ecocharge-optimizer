@@ -5,7 +5,7 @@ import { media } from '../styles/media';
 const ErrorArea = styled.div`
   display: flex;
   width: 75%;
-  min-height: 174px;
+  min-height: 210px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -17,7 +17,7 @@ const ErrorArea = styled.div`
   `}
 
   ${media.md`
-    min-height: 176px;
+    min-height: 216px;
   `}
 `;
 
@@ -39,8 +39,8 @@ export default function ChargingWindowCardError() {
     <ErrorArea aria-live="polite" aria-busy="false">
       <WarningIcon aria-hidden>⚠</WarningIcon>
       <StateMessage>
-        Something went wrong while calculating your best charging window. Try
-        again later.
+        Couldn&apos;t compute your best charging window. Check your connection
+        and try again in a moment.
       </StateMessage>
     </ErrorArea>
   );

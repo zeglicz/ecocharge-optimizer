@@ -26,15 +26,22 @@ const energyMixTitles = ['Today', 'Tomorrow', 'In 2 days'] as const;
 export default function App() {
   const [generationData, setGenerationData] = useState<DayGenerationData[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    fetchGeneration()
-      .then(async (res) => {
+    async function loadGenerationMix() {
+      try {
+        const res = await fetchGeneration();
         setGenerationData(res.data);
-      })
-      .catch(() => setError('Error'))
-      .finally(() => setLoading(false));
+      } catch (err) {
+        setError(true);
+        console.error('Failed to fetch generation data:', err);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadGenerationMix();
   }, []);
 
   return (
@@ -50,7 +57,7 @@ export default function App() {
                 <EnergyMixCardLoading key={`loading-${index}`} />
               ))}
             {!loading &&
-              !!error &&
+              error &&
               energyMixTitles.map((title) => (
                 <EnergyMixCardError key={`error-${title}`} title={title} />
               ))}
