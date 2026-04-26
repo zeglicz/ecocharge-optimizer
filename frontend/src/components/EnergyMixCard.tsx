@@ -48,12 +48,12 @@ const ChartContainer = styled.div`
   height: 20px;
 `;
 
-type CardOverviewProps = {
+type EnergyMixCardProps = {
   title: string;
   data: DayGenerationData;
 };
 
-function CardOverview({ title, data }: CardOverviewProps) {
+function EnergyMixCard({ title, data }: EnergyMixCardProps) {
   const chartData = [
     {
       name: 'energyMix',
@@ -121,4 +121,4 @@ function CardOverview({ title, data }: CardOverviewProps) {
   );
 }
 
-export default CardOverview;
+export default EnergyMixCard;
