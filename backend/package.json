@@ -3,7 +3,8 @@
   "author": "Przemysław Żeglicz",
   "type": "module",
   "scripts": {
-    "start": "nodemon src/index.ts"
+    "start:dev": "nodemon src/index.ts",
+    "start:prod": "tsx src/index.ts"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
@@ -16,6 +17,7 @@
     "axios": "^1.13.6",
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "tsx": "^4.21.0"
   }
 }
