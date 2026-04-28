@@ -33,6 +33,17 @@ const HeaderStyled = styled.header`
         margin-right: 3px;
     }
   `}
+
+  ${media.lg`
+    h1 {
+      font-size: 2.1rem;
+      width: 567px;
+    }
+
+    img {
+      height: 36px;
+    }
+  `}
 `;
 
 const Highlight = styled.span`
