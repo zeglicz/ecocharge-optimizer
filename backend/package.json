@@ -4,12 +4,16 @@
   "type": "module",
   "scripts": {
     "start:dev": "nodemon src/index.ts",
-    "start:prod": "tsx src/index.ts"
+    "start:prod": "tsx src/index.ts",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
+    "@types/jest": "^30.0.0",
     "@types/node": "^25.5.0",
+    "jest": "^30.4.2",
     "nodemon": "^3.1.14",
+    "ts-jest": "^29.4.11",
     "ts-node": "^10.9.2",
     "typescript": "^6.0.2"
   },
