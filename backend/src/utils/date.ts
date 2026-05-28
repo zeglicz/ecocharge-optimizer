@@ -1,4 +1,6 @@
-export function getDateRange(days: number): { from: string; to: string } {
+import type { DateRange } from '../types/index.ts';
+
+export function getDateRange(days: number): DateRange {
   const now = new Date();
 
   const start = new Date(

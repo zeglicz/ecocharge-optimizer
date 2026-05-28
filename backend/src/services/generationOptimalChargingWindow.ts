@@ -1,17 +1,9 @@
-import type { Interval } from '../types/index.ts';
+import type { Interval, OptimalChargingWindowResult } from '../types/index.ts';
 import { CLEAN_SOURCES } from '../constants/energy.ts';
 
 import { getCurrentHalfHour, getDateRange } from '../utils/date.ts';
 import { fetchGeneration } from './apiGeneration.ts';
 import { NotEnoughDataError } from '../errors/NotEnoughDataError.ts';
-
-interface OptimalChargingWindowResult {
-  startDate: string;
-  startTime: string;
-  endDate: string;
-  endTime: string;
-  cleanEnergyPercent: number;
-}
 
 function calcCleanPercent(intervals: Interval[]): number {
   const avg =
