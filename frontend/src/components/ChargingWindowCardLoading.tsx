@@ -39,7 +39,10 @@ const Spinner = styled.div`
 export default function ChargingWindowCardLoading() {
   return (
     <LoadingArea aria-live="polite" aria-busy="true">
-      <Spinner aria-label="Calculating best charging window" />
+      <Spinner
+        aria-label="Calculating best charging window"
+        data-testid="charging-window-loading"
+      />
     </LoadingArea>
   );
 }

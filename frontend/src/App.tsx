@@ -32,8 +32,6 @@ export default function App() {
     async function loadGenerationMix() {
       try {
         const res = await fetchGeneration();
-        if (res.data === undefined)
-          throw new Error('Fetched data is undefined');
         setGenerationData(res.data);
       } catch (err) {
         setError(true);

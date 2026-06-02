@@ -170,8 +170,10 @@ export function ChargingSlotCard({
 
       <FieldLabel>charging duration</FieldLabel>
       <HourDisplay>
-        <HourValue>{hours}</HourValue>
-        <HourUnit>{hours === 1 ? 'hour' : 'hours'}</HourUnit>
+        <HourValue data-testid="charging-hours-value">{hours}</HourValue>
+        <HourUnit data-testid="charging-hours-unit">
+          {hours === 1 ? 'hour' : 'hours'}
+        </HourUnit>
       </HourDisplay>
 
       <SliderContainer>
