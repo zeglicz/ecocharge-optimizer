@@ -71,7 +71,37 @@ This definition is consistently used across aggregation and optimization logic.
 | -------- | ------------------------------------------------------- |
 | Frontend | React 19, TypeScript, Vite, styled-components, Recharts |
 | Backend  | Node.js, Express 5, TypeScript                          |
+| Testing  | Vitest, React Testing Library, Jest, Supertest          |
 | Data     | National Grid Carbon Intensity API                      |
+
+---
+
+## Testing
+
+The application includes automated tests across both frontend and backend layers.
+
+### Frontend
+
+Coverage includes:
+
+- API service layer
+- Component state rendering
+- User interactions
+- Loading, success and error flows
+- Charging window analysis workflow
+
+### Backend
+
+Coverage includes:
+
+- Route handlers
+- External API integration
+- Aggregation logic
+- Charging optimization algorithm
+- Custom error handling
+- Date utilities
+
+The core business logic responsible for energy aggregation and optimal charging window calculation is covered by dedicated unit tests.
 
 ---
 
